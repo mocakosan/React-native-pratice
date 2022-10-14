@@ -1,13 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-const TodoListItem = ({textValue, id, checked}) => {
+const TodoListItem = ({textValue, id, checked, onRemove}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
         <View style={styles.circle} />
       </TouchableOpacity>
-      <Text style={styles.text}>TodoList items will be shown here</Text>
+      <Text style={styles.text} onPress={onRemove(id)}>
+        Delete me
+      </Text>
       <TouchableOpacity style={styles.buttonContainer}>
         <View style={styles.circle} />
       </TouchableOpacity>
