@@ -4,11 +4,15 @@ import TodoListItem from './TodoListItem';
 
 const TodoList = ({todos, onRemove}) => {
   return (
-    <ScrollView contentContainerStyle={styles.listContainer}>
-      {todos.map(todo => (
-        <TodoListItem key={todo.id} {...todo} onRemove={onRemove} />
-      ))}
-    </ScrollView>
+     <ScrollView contentContainerStyle={styles.listContainer}>
+         {todos.map(todo => (
+           <TodoListItem
+             key={todo.id}
+             {...todo}
+             onRemove={onRemove}
+           />
+         ))}
+     </ScrollView>
   );
 };
 
