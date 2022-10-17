@@ -14,12 +14,19 @@ const App = () => {
   const onRemove = id => e => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
+  const onToggle = id => e => {
+      setTodos(
+        todos.map(todo =>
+          todo.id === id ? {...todo, checked: !todo.checked} : todo,
+        ),
+      );
+    };
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.appTitle}>Hello Todolist</Text>
+      <Text style={styles.appTitle}>Todolist</Text>
       <View style={styles.card}>
         <TodoInsert onAddTodo={addTodo} />
-        <TodoList todos={todos} onRemove={onRemove} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </View>
     </SafeAreaView>
   );
@@ -28,7 +35,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3143e8',
+    backgroundColor: 'black',
   },
   appTitle: {
     color: '#fff',
@@ -37,7 +44,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     fontWeight: '300',
     textAlign: 'center',
-    backgroundColor: '#3143e8',
+    backgroundColor: 'black',
   },
   card: {
     backgroundColor: '#fff',
